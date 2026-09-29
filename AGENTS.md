@@ -11,3 +11,7 @@ Uses the default canonical labels: `needs-triage`, `needs-info`, `ready-for-agen
 ### Domain docs
 
 Uses the single-context layout. See `docs/agents/domain.md`.
+
+## Context sources
+
+- [Agent skills configuration](docs/agents/)
