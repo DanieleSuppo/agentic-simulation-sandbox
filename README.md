@@ -215,7 +215,7 @@ See [`docs/BOUNDARIES.md`](docs/BOUNDARIES.md) for the current architectural bou
 
 ## Initial MVP direction
 
-The first useful milestone is intentionally narrow. The public runtime should be sufficient for the private reference environment to implement an authoritative headless game engine and run reproducible automated campaigns.
+The broader capabilities below are directional. The first implementable milestone is smaller: [SPEC #9](https://github.com/DanieleSuppo/agentic-simulation-sandbox/issues/9) delivers one deterministic Run with the public Environment boundary, policy, isolated RNG, and separate domain versus technical termination. Campaigns and collectors follow later.
 
 The expected first capabilities are:
 
@@ -235,7 +235,7 @@ The expected first capabilities are:
 - paired seed execution for comparisons;
 - per-run metric results and campaign aggregation.
 
-The exact API and package boundaries are intentionally not fixed by this README. They should be resolved from the needs of the reference environment before implementation.
+The API and package boundaries needed for this initial slice are in SPEC #9. The remaining items below are later aspirations, not requirements of this SPEC.
 
 ## Non-goals for the initial project
 
@@ -269,6 +269,15 @@ This repository may eventually provide reusable simulation or agent-evaluation p
 
 ## Current status
 
-The project is in design/discovery. The first architectural boundaries have been agreed, but the runtime API and implementation have not yet been specified.
+**First public runtime SPEC and implementation tickets are ready; runtime implementation has not started (2026-10-26).** Wayfinder decision issues #2-#8 are closed; map [#1](https://github.com/DanieleSuppo/agentic-simulation-sandbox/issues/1) remains open as a tracker. The [first-slice SPEC #9](https://github.com/DanieleSuppo/agentic-simulation-sandbox/issues/9) and implementation tickets #10-#13 remain open. The repository contains design and agent configuration, not an executable public runtime.
 
-The next intended step is a Wayfinder design session using both this repository and the private reference environment as context, followed by a SPEC once the remaining implementation-relevant decisions are resolved.
+The first unblocked ticket is [#10, Environment decision-boundary contract](https://github.com/DanieleSuppo/agentic-simulation-sandbox/issues/10). Follow actual GitHub dependencies for #11 and #12, then validate through #13 against an authoritative headless Environment in the private reference-game repository. The private game's domain must not enter the public package.
+
+## Development workflow and next handoff (2026-10-26)
+
+Use the installed Matt Pocock skills and existing GitHub Issues conventions ([AGENTS.md](AGENTS.md), [issue-tracker configuration](docs/agents/issue-tracker.md)). Read [docs/BOUNDARIES.md](docs/BOUNDARIES.md), [domain guidance](docs/agents/domain.md), the public Wayfinder decisions [#1-#8](https://github.com/DanieleSuppo/agentic-simulation-sandbox/issues/1), and [SPEC #9](https://github.com/DanieleSuppo/agentic-simulation-sandbox/issues/9). Do not impose a new orchestration workflow.
+
+- **Completed:** technical Wayfinder decisions -> initial single-run `to-spec` -> `to-tickets`. The map and delivery parent issues are open in GitHub; that status does not invalidate their already written design.
+- **Now (public repo):** standard implementation by ticket, beginning with `/implement #10` if installed. Follow dependencies for #11-#13. Tests use domain-neutral fixture Environments.
+- **Cross-repo:** [#13](https://github.com/DanieleSuppo/agentic-simulation-sandbox/issues/13) is validated against the private [reference-game](https://github.com/DanieleSuppo/agentic-simulation-reference-game) Environment. Dependencies are private -> public only.
+- **Later:** expand to campaigns, collectors, paired comparisons and LLM policies on demonstrated demand. Do not repeat Wayfinder or expand the first-slice SPEC by default.
